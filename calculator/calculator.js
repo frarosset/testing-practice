@@ -1,6 +1,8 @@
 export class Calculator {
   constructor() {}
 
+  static notNumericError = "Not numeric inputs";
+
   #isNotNumeric(num) {
     return typeof num !== "number";
   }
@@ -11,7 +13,7 @@ export class Calculator {
       false
     );
     if (invaidInputs) {
-      throw new Error("Not numeric inputs");
+      throw new Error(Calculator.notNumericError);
     }
   }
 

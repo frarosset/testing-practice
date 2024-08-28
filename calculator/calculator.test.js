@@ -1,16 +1,31 @@
 import calculator from "./calculator.js";
 
+// dataArray items: [number1, number2, expected result]
+const testDataArrayToBeCloseTo = (dataArray, operation) => {
+  dataArray.forEach((data) => {
+    const actual = calculator[operation](data[0], data[1]);
+    const expected = data[2];
+    expect(actual).toBeCloseTo(expected);
+  });
+};
+
+const testDataArrayToThrow = (dataArray, error, operation) => {
+  dataArray.forEach((data) => {
+    expect(() => {
+      calculator[operation](data[0], data[1]);
+    }).toThrow(error);
+  });
+};
+
+const notNumericError = "Not numeric inputs";
+
 test("add integer numbers", () => {
   const dataArray = [
     [1, 2, 3],
     [0, 0, 0],
     [-1, -2, -3],
   ];
-  dataArray.forEach((data) => {
-    const actual = calculator.add(data[0], data[1]);
-    const expected = data[2];
-    expect(actual).toBe(expected);
-  });
+  testDataArrayToBeCloseTo(dataArray, "add");
 });
 
 test("add floating point numbers", () => {
@@ -18,11 +33,7 @@ test("add floating point numbers", () => {
     [1.9, 2.8, 4.7],
     [0.1, 0.2, 0.3],
   ];
-  dataArray.forEach((data) => {
-    const actual = calculator.add(data[0], data[1]);
-    const expected = data[2];
-    expect(actual).toBeCloseTo(expected);
-  });
+  testDataArrayToBeCloseTo(dataArray, "add");
 });
 
 test("throw error when add non-numeric inputs", () => {
@@ -32,12 +43,7 @@ test("throw error when add non-numeric inputs", () => {
     ["1", "abc"],
     [[1, 1, 1], 1],
   ];
-
-  dataArray.forEach((data) => {
-    expect(() => {
-      calculator.add(data[0], data[1]);
-    }).toThrow("Not numeric inputs");
-  });
+  testDataArrayToThrow(dataArray, notNumericError, "add");
 });
 
 test("subtract integer numbers", () => {
@@ -46,11 +52,7 @@ test("subtract integer numbers", () => {
     [0, 0, 0],
     [-1, -2, 1],
   ];
-  dataArray.forEach((data) => {
-    const actual = calculator.subtract(data[0], data[1]);
-    const expected = data[2];
-    expect(actual).toBe(expected);
-  });
+  testDataArrayToBeCloseTo(dataArray, "subtract");
 });
 
 test("subtract floating point numbers", () => {
@@ -58,11 +60,7 @@ test("subtract floating point numbers", () => {
     [1.9, 2.8, -0.9],
     [0.1, 0.2, -0.1],
   ];
-  dataArray.forEach((data) => {
-    const actual = calculator.subtract(data[0], data[1]);
-    const expected = data[2];
-    expect(actual).toBeCloseTo(expected);
-  });
+  testDataArrayToBeCloseTo(dataArray, "subtract");
 });
 
 test("throw error when subtract non-numeric inputs", () => {
@@ -72,10 +70,5 @@ test("throw error when subtract non-numeric inputs", () => {
     ["1", "abc"],
     [[1, 1, 1], 1],
   ];
-
-  dataArray.forEach((data) => {
-    expect(() => {
-      calculator.subtract(data[0], data[1]);
-    }).toThrow("Not numeric inputs");
-  });
+  testDataArrayToThrow(dataArray, notNumericError, "subtract");
 });
