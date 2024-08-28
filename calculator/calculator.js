@@ -26,6 +26,10 @@ export class Calculator {
     this.#checkInputs(num1, num2);
     return num1 - num2;
   }
+
+  divide(num1, num2) {
+    return num1 / num2;
+  }
 }
 
 const calculator = new Calculator();
