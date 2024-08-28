@@ -41,3 +41,13 @@ test("test basic array", () => {
   ];
   testDataArrayToBe(dataArray);
 });
+
+test("throw error when the input is not a string", () => {
+  const dataArray = [122, undefined, null, ["hello", "world"]];
+
+  dataArray.forEach((data) => {
+    expect(() => {
+      analyzeArray(data);
+    }).toThrow("Not an array of numbers");
+  });
+});
