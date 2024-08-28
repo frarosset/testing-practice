@@ -5,17 +5,23 @@ export class Calculator {
     return typeof num !== "number";
   }
 
-  add(num1, num2) {
-    if (this.#isNotNumeric(num1) || this.#isNotNumeric(num2)) {
+  #checkInputs(...inputs) {
+    const invaidInputs = inputs.reduce(
+      (invaidInputs, input) => invaidInputs || this.#isNotNumeric(input),
+      false
+    );
+    if (invaidInputs) {
       throw new Error("Not numeric inputs");
     }
+  }
+
+  add(num1, num2) {
+    this.#checkInputs(num1, num2);
     return num1 + num2;
   }
 
   subtract(num1, num2) {
-    if (this.#isNotNumeric(num1) || this.#isNotNumeric(num2)) {
-      throw new Error("Not numeric inputs");
-    }
+    this.#checkInputs(num1, num2);
     return num1 - num2;
   }
 }
