@@ -18,6 +18,7 @@ const testDataArrayToThrow = (dataArray, error, operation) => {
 };
 
 const notNumericError = "Not numeric inputs";
+const divideByZeroError = "Division by 0";
 
 test("add integer numbers", () => {
   const dataArray = [
@@ -80,6 +81,14 @@ test("divide numbers", () => {
     [-0.1, 0.2, -0.5],
   ];
   testDataArrayToBeCloseTo(dataArray, "divide");
+});
+
+test("throw error when divide by 0", () => {
+  const dataArray = [
+    [1, 0],
+    [0, 0],
+  ];
+  testDataArrayToThrow(dataArray, divideByZeroError, "divide");
 });
 
 test("throw error when divide non-numeric inputs", () => {
