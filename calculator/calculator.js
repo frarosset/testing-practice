@@ -28,6 +28,10 @@ export class Calculator {
     return num1 - num2;
   }
 
+  multiply(num1, num2) {
+    return num1 * num2;
+  }
+
   divide(num1, num2) {
     this.#checkInputs(num1, num2);
     if (num2 === 0) {
