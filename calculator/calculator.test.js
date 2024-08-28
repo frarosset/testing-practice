@@ -9,6 +9,7 @@ const testDataArrayToBeCloseTo = (dataArray, operation) => {
   });
 };
 
+// dataArray items: [number1, number2]
 const testDataArrayToThrow = (dataArray, error, operation) => {
   dataArray.forEach((data) => {
     expect(() => {
