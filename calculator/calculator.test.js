@@ -40,7 +40,7 @@ test("throw error when add non-numeric inputs", () => {
   const dataArray = [
     [1, null],
     [undefined, 1],
-    ["1", "abc"],
+    ["1", "2"],
     [[1, 1, 1], 1],
   ];
   testDataArrayToThrow(dataArray, notNumericError, "add");
@@ -67,7 +67,7 @@ test("throw error when subtract non-numeric inputs", () => {
   const dataArray = [
     [1, null],
     [undefined, 1],
-    ["1", "abc"],
+    ["1", "2"],
     [[1, 1, 1], 1],
   ];
   testDataArrayToThrow(dataArray, notNumericError, "subtract");
@@ -80,4 +80,14 @@ test("divide numbers", () => {
     [-0.1, 0.2, -0.5],
   ];
   testDataArrayToBeCloseTo(dataArray, "divide");
+});
+
+test("throw error when divide non-numeric inputs", () => {
+  const dataArray = [
+    [1, null],
+    [undefined, 1],
+    ["1", "2"],
+    [[1, 1, 1], 1],
+  ];
+  testDataArrayToThrow(dataArray, notNumericError, "divide");
 });
