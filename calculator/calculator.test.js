@@ -64,3 +64,18 @@ test("subtract floating point numbers", () => {
     expect(actual).toBeCloseTo(expected);
   });
 });
+
+test("throw error when subtract non-numeric inputs", () => {
+  const dataArray = [
+    [1, null],
+    [undefined, 1],
+    ["1", "abc"],
+    [[1, 1, 1], 1],
+  ];
+
+  dataArray.forEach((data) => {
+    expect(() => {
+      calculator.subtract(data[0], data[1]);
+    }).toThrow("Not numeric inputs");
+  });
+});
