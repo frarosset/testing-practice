@@ -35,3 +35,13 @@ test("test punctation and other non-alphabetical chars to remain unchanged (case
   const dataArray = [["Hello, World!", 3, "Khoor, Zruog!"]];
   testDataArrayToBe(dataArray);
 });
+
+test("throw error when the input is not a string", () => {
+  const dataArray = [122, undefined, null, ["hello", "world"]];
+
+  dataArray.forEach((data) => {
+    expect(() => {
+      caesarCipher(data);
+    }).toThrow("Not a string");
+  });
+});
