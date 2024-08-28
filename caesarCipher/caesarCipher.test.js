@@ -36,6 +36,11 @@ test("test punctation and other non-alphabetical chars to remain unchanged (case
   testDataArrayToBe(dataArray);
 });
 
+test("test zero-length string", () => {
+  const dataArray = [["", 3, ""]];
+  testDataArrayToBe(dataArray);
+});
+
 test("throw error when the input is not a string", () => {
   const dataArray = [122, undefined, null, ["hello", "world"]];
 
