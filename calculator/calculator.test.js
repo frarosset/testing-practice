@@ -83,6 +83,16 @@ test("multiply numbers", () => {
   testDataArrayToBeCloseTo(dataArray, "multiply");
 });
 
+test("throw error when multiply non-numeric inputs", () => {
+  const dataArray = [
+    [1, null],
+    [undefined, 1],
+    ["1", "2"],
+    [[1, 1, 1], 1],
+  ];
+  testDataArrayToThrow(dataArray, notNumericError, "multiply");
+});
+
 test("divide numbers", () => {
   const dataArray = [
     [10, 5, 2],
