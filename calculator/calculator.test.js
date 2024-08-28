@@ -74,6 +74,15 @@ test("throw error when subtract non-numeric inputs", () => {
   testDataArrayToThrow(dataArray, notNumericError, "subtract");
 });
 
+test("multiply numbers", () => {
+  const dataArray = [
+    [10, 5, 50],
+    [0.1, 0.2, 0.02],
+    [-0.1, 0.2, -0.02],
+  ];
+  testDataArrayToBeCloseTo(dataArray, "multiply");
+});
+
 test("divide numbers", () => {
   const dataArray = [
     [10, 5, 2],
