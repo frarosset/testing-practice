@@ -1,4 +1,4 @@
-import caesarChiper from "./caesarCipher.js";
+import caesarCipher from "./caesarCipher.js";
 
 // dataArray items: [string, shift factor, expected result]
 const testDataArrayToBe = (dataArray) => {
