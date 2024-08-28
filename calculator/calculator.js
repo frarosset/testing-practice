@@ -2,6 +2,7 @@ export class Calculator {
   constructor() {}
 
   static notNumericError = "Not numeric inputs";
+  static divideByZeroError = "Division by 0";
 
   #isNotNumeric(num) {
     return typeof num !== "number";
@@ -29,6 +30,9 @@ export class Calculator {
 
   divide(num1, num2) {
     this.#checkInputs(num1, num2);
+    if (num2 === 0) {
+      throw new Error(Calculator.divideByZeroError);
+    }
     return num1 / num2;
   }
 }
