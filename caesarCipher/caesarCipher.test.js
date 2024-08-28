@@ -30,3 +30,8 @@ test("test wrapping from z to a and from Z to A (case preservation)", () => {
   ];
   testDataArrayToBe(dataArray);
 });
+
+test("test punctation and other non-alphabetical chars to remain unchanged (case preservation)", () => {
+  const dataArray = [["Hello, World!", 3, "Khoor, Zruog!"]];
+  testDataArrayToBe(dataArray);
+});
