@@ -15,5 +15,10 @@ test("test basic strings", () => {
     ["fgh", 3, "ijk"],
     ["fgh", -3, "cde"],
   ];
-  testDataArrayToBe(dataArray, "add");
+  testDataArrayToBe(dataArray);
+});
+
+test("test wrapping from z to a", () => {
+  const dataArray = [["xyz", 3, "abc"]];
+  testDataArrayToBe(dataArray);
 });
