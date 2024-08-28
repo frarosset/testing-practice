@@ -17,11 +17,17 @@ export default function caesarCipher(string, shiftFactor) {
 }
 
 function encodeChar(char, shiftFactor) {
-  const charCode = char.charCodeAt();
+  const lowerCase = isLowerCase(char);
+  const upperCase = isUpperCase(char);
 
-  const charInterval = isLowerCase(char)
-    ? lowercaseInterval
-    : uppercaseInterval;
+  if (!(lowerCase || upperCase)) {
+    return char;
+  }
+
+  // char is either lowercase or uppercase
+  const charInterval = lowerCase ? lowercaseInterval : uppercaseInterval;
+
+  const charCode = char.charCodeAt();
 
   const shiftedCharCode = charCode + shiftFactor;
   const wrappedShiftedCharCode = wrapChar(shiftedCharCode, charInterval);
@@ -41,4 +47,8 @@ function wrapChar(charCode, [minCode, maxCode, diff]) {
 
 function isLowerCase(str) {
   return str === str.toLowerCase() && str !== str.toUpperCase();
+}
+
+function isUpperCase(str) {
+  return str === str.toUpperCase() && str !== str.toLowerCase();
 }
