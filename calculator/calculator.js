@@ -29,6 +29,7 @@ export class Calculator {
   }
 
   multiply(num1, num2) {
+    this.#checkInputs(num1, num2);
     return num1 * num2;
   }
 
