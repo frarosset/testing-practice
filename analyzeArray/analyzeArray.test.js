@@ -20,6 +20,24 @@ test("test basic array", () => {
         length: 6,
       },
     ],
+    [
+      [1, 1, 1, 1],
+      {
+        average: 1,
+        min: 1,
+        max: 1,
+        length: 4,
+      },
+    ],
+    [
+      [1, 1, 1, 100],
+      {
+        average: 103 / 4,
+        min: 1,
+        max: 100,
+        length: 4,
+      },
+    ],
   ];
   testDataArrayToBe(dataArray);
 });
