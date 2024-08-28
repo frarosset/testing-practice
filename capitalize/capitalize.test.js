@@ -47,3 +47,13 @@ test("capitalize a zero-character string", () => {
     expect(actual).toBe(expected);
   });
 });
+
+test("throw error when the input is not a string", () => {
+  const dataArray = [122, undefined, null, ["hello", "world"]];
+
+  dataArray.forEach((data) => {
+    expect(() => {
+      capitalize(data);
+    }).toThrow("Not a string");
+  });
+});
