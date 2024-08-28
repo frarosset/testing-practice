@@ -7,6 +7,10 @@ const lowercaseInterval = [aCode, zCode, azCodeDiff];
 const uppercaseInterval = [ACode, ZCode, azCodeDiff];
 
 export default function caesarCipher(string, shiftFactor) {
+  if (!isString(string)) {
+    throw new Error("Not a string");
+  }
+
   const stringArr = string.split("");
 
   const encodedStringArr = stringArr.map((char) =>
@@ -51,4 +55,8 @@ function isLowerCase(str) {
 
 function isUpperCase(str) {
   return str === str.toUpperCase() && str !== str.toLowerCase();
+}
+
+function isString(str) {
+  return typeof str === "string" || str instanceof String;
 }
