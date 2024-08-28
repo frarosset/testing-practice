@@ -18,7 +18,15 @@ test("test basic strings", () => {
   testDataArrayToBe(dataArray);
 });
 
-test("test wrapping from z to a", () => {
-  const dataArray = [["xyz", 3, "abc"]];
+test("test wrapping from z to a and from Z to A (case preservation)", () => {
+  const dataArray = [
+    ["xyz", 3, "abc"],
+    ["XYZ", 3, "ABC"],
+    ["XyZ", 3, "AbC"],
+    ["abc", -3, "xyz"],
+    ["ABC", -3, "XYZ"],
+    ["AbC", -3, "XyZ"],
+    ["HeLLo", 3, "KhOOr"],
+  ];
   testDataArrayToBe(dataArray);
 });
